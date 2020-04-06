@@ -7,6 +7,10 @@ import authMiddleware from './app/middlewares/auth';
 import CelebrateController, {
 	exampleValidation,
 } from './app/controllers/CelebrateController';
+import CalendarController, {
+	createEventValidation,
+	getEventsValidation,
+} from './app/controllers/CalendarController';
 
 const routes = new Router();
 
@@ -24,6 +28,10 @@ routes.get('/', (req, res) => {
 // 	"email": "jill@stars.com"
 // }'
 routes.post('/celebrate/:id', exampleValidation, CelebrateController.example);
+
+routes.get('/calendar', getEventsValidation, CalendarController.getEvents);
+routes.post('/calendar', createEventValidation, CalendarController.createEvent);
+routes.delete('/calendar/:id', CalendarController.deleteEvent);
 
 // All routes below this line require authentication
 routes.use(authMiddleware);

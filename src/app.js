@@ -1,6 +1,8 @@
 import express from 'express';
+import 'dotenv/config';
 import cors from 'cors';
 import { errors } from 'celebrate';
+import './database';
 import routes from './routes';
 
 class App {
