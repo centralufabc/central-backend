@@ -3,9 +3,9 @@ import CalendarEvent from '../schemas/CalendarEvent';
 
 class CalendarController {
 	async createEvent(req, res) {
-		await CalendarEvent.create(req.body);
+		const result = await CalendarEvent.create(req.body);
 
-		return res.json({ message: 'ok' });
+		return res.json(result);
 	}
 
 	/**
@@ -27,6 +27,13 @@ class CalendarController {
 
 	async deleteEvent(req, res) {
 		const { id } = req.params;
+
+		const event = await CalendarEvent.findById(id);
+
+		if (!event) {
+			return res.status(404).json({ error: 'Calendar event not found' });
+		}
+
 		await CalendarEvent.findByIdAndDelete(id);
 		return res.status(204).send();
 	}
@@ -43,9 +50,9 @@ export const createEventValidation = celebrate({
 	[Segments.BODY]: Joi.object().keys({
 		title: Joi.string().required(),
 		subtitle: Joi.string(),
-		type: Joi.string().valid('party', 'acad', 'other'),
-		startDate: Joi.date().required(),
-		endDate: Joi.date(),
+		type: Joi.string().valid('party', 'acad', 'other').required(),
+		startDate: Joi.date().iso().required(),
+		endDate: Joi.date().iso().min(Joi.ref('startDate')),
 		showTime: Joi.boolean(),
 		imgUrl: Joi.string(),
 		link: Joi.string(),
