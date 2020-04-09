@@ -14,7 +14,6 @@ class ClassController {
 
 export const getClassesByRaValidation = celebrate({
 	[Segments.PARAMS]: Joi.object().keys({
-		// ra: Joi.string().min(8).max(11).required(),
 		ra: Joi.alternatives()
 			.try(Joi.string().length(8), Joi.string().length(11))
 			.error(new Error('RA inválido')),
