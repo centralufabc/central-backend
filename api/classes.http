@@ -1,0 +1,2 @@
+### Get classes
+GET {{baseUrl}}/classes/{{ra}}
