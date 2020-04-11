@@ -1,0 +1,28 @@
+### Create Event (Min)
+POST {{baseUrl}}/calendar
+
+{
+	"title": "Início do quadrimestre 2020.1",
+	"type": "acad",
+	"startDate": "2020-04-20T12:00:00-03:00"
+}
+
+### Create Event (Complete)
+POST {{baseUrl}}/calendar
+
+{
+    "title": "Início do quadrimestre 2020.1",
+    "subtitle": "Aulas no regime de ECE (Estudo Continuado Emergencial)",
+    "type": "acad",
+    "startDate": "2020-04-20T12:00:00-03:00",
+    "endDate": "2020-06-16T12:00:00-03:00",
+    "showTime": false,
+    "imgUrl": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+    "link": "http://www.ufabc.edu.br/sobre-o-coronavirus/consepe-aprova-estudos-continuados-emergenciais"
+}
+
+### Delete Event
+DELETE {{baseUrl}}/calendar/5e8b6f3043783e10a9c0646d
+
+### Get Unfinished Events
+GET {{baseUrl}}/calendar?page=1&limit=10
