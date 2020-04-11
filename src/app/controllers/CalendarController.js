@@ -8,10 +8,7 @@ class CalendarController {
 		return res.json(result);
 	}
 
-	/**
-	 * Return upcoming and unfinished events
-	 */
-	async getEvents(req, res) {
+	async getUnfinishedEvents(req, res) {
 		const now = new Date();
 
 		const { page = 1, limit = 5 } = req.query;
@@ -39,7 +36,7 @@ class CalendarController {
 	}
 }
 
-export const getEventsValidation = celebrate({
+export const getUnfinishedEventsValidation = celebrate({
 	[Segments.QUERY]: Joi.object().keys({
 		page: Joi.number().min(1),
 		limit: Joi.number().min(5).max(10),

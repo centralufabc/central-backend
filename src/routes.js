@@ -6,10 +6,10 @@ import authMiddleware from './app/middlewares/auth';
 // Controllers
 import CalendarController, {
 	createEventValidation,
-	getEventsValidation,
+	getUnfinishedEventsValidation,
 } from './app/controllers/CalendarController';
 import ClassesController, {
-	getClassesByRaValidation,
+	getAllStudentClassesByRaValidation,
 } from './app/controllers/ClassesController';
 
 const routes = new Router();
@@ -19,15 +19,19 @@ routes.get('/', (req, res) => {
 });
 
 // Calendar
-routes.get('/calendar', getEventsValidation, CalendarController.getEvents);
+routes.get(
+	'/calendar',
+	getUnfinishedEventsValidation,
+	CalendarController.getUnfinishedEvents
+);
 routes.post('/calendar', createEventValidation, CalendarController.createEvent);
 routes.delete('/calendar/:id', CalendarController.deleteEvent);
 
 // Classes
 routes.get(
 	'/classes/:ra',
-	getClassesByRaValidation,
-	ClassesController.getClassesByRa
+	getAllStudentClassesByRaValidation,
+	ClassesController.getAllStudentClassesByRa
 );
 
 // All routes below this line require authentication

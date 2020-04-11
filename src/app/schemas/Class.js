@@ -1,27 +1,27 @@
 import mongoose from 'mongoose';
 
 const ClassSchema = new mongoose.Schema({
-	codigo: {
+	code: {
 		type: String,
 		required: true,
 	},
-	classe: {
+	class: {
 		type: String,
 		required: true,
 	},
-	teoria: {
+	theory: {
 		type: String,
 	},
-	pratica: {
+	practice: {
 		type: String,
 	},
-	docenteTeoria: {
+	theoryTeacher: {
 		type: String,
 	},
-	docentePratica: {
+	practiceTeacher: {
 		type: String,
 	},
-	listaRa: {
+	raList: {
 		type: [String],
 		required: true,
 	},

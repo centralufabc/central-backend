@@ -3,10 +3,6 @@ import app from '../../src/app';
 import Class from '../../src/app/schemas/Class';
 
 describe('Classes', () => {
-	beforeAll(async () => {
-		//
-	});
-
 	afterAll(async () => {
 		await Class.deleteMany();
 	});
@@ -33,14 +29,14 @@ describe('Classes', () => {
 
 	it('Should return the correct classes for a given RA', async () => {
 		Class.create({
-			codigo: 'A',
-			classe: 'Geometria Analítica',
-			listaRa: ['11033320', '11022219', '11011118'],
+			code: 'A',
+			class: 'Geometria Analítica',
+			raList: ['11033320', '11022219', '11011118'],
 		});
 		Class.create({
-			codigo: 'B',
-			classe: 'Processamento da Informação',
-			listaRa: ['11033320', '11011118'],
+			code: 'B',
+			class: 'Processamento da Informação',
+			raList: ['11033320', '11011118'],
 		});
 
 		const response1 = await request(app).get('/classes/11033320');
