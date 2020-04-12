@@ -7,6 +7,8 @@
     "dev": "nodemon src/server.js",
     "dev:debug": "nodemon --inspect src/server.js",
     "test": "jest",
+    "unit_test": "jest unit",
+    "integration_test": "jest integration",
     "lint": "eslint src/**"
   },
   "dependencies": {
