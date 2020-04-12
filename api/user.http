@@ -1,0 +1,24 @@
+### Create User
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+	"name": "Rodrigo Mayer",
+	"email": "mayer.rodrigo@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
+
+### Get User
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+
+
+### Update User
+PUT {{baseUrl}}/users
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"name": "Rodrigo Rominho Mayer",
+	"ra": 11201722286
+}

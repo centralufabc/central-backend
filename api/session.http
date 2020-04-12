@@ -1,0 +1,8 @@
+### LOGIN
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+	"email": "mayer.rodrigo@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
