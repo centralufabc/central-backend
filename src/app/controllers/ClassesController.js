@@ -6,6 +6,7 @@ class ClassController {
 		const classes = await Class.find({ raList: req.params.ra }).select(
 			'-listaRa'
 		);
+		
 
 		return res.json(classes);
 	}
