@@ -24,7 +24,12 @@ class UserController {
 		const passwordHash = await bcrypt.hash(password, 8);
 		const createdUser = await User.create({ name, email, passwordHash, ra });
 
-		return res.json(createdUser);
+		return res.json({
+			_id: createdUser._id,
+			name: createdUser.name,
+			email: createdUser.email,
+			ra: createdUser.ra,
+		});
 	}
 
 	async getUser(req, res) {
