@@ -6,7 +6,7 @@ class Database {
 	}
 
 	mongo() {
-		this.mongoConnection = mongoose.connect('mongodb://localhost:27017/dev', {
+		this.mongoConnection = mongoose.connect('mongodb://localhost:33333/dev', {
 			useNewUrlParser: true,
 			useFindAndModify: true,
 			useUnifiedTopology: true,
