@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout repository 
         uses: actions/checkout@v1
-      - name: Create mongo Docker container
+      - name: Create MongoDB docker container
         id: build_mongo_docker
         uses: DigiPie/mongo-action@v1.0.0
         with:
