@@ -3,8 +3,9 @@ import app from '../../src/app';
 import Class from '../../src/app/schemas/Class';
 
 describe('Classes', () => {
-	afterAll(async () => {
+	afterAll(async (done) => {
 		await Class.deleteMany();
+		done();
 	});
 
 	it('Should not accept requests with incorrect RA param', async () => {

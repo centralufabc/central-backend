@@ -3,13 +3,9 @@ import app from '../../src/app';
 import CalendarEvent from '../../src/app/schemas/CalendarEvent';
 
 describe('Calendar', () => {
-	beforeEach(async () => {
-		//
-	});
-
-	afterAll(async () => {
-		// Remove all documents from Calendar collection
+	afterAll(async (done) => {
 		await CalendarEvent.deleteMany();
+		done();
 	});
 
 	// LIST CALENDAR EVENT
