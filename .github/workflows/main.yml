@@ -4,19 +4,21 @@ jobs:
   build:
     name: Test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        work-dir: [server]
-        node-version: [10.x, 12.x]
     steps:
       - name: Checkout repository 
         uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Create mongoDB docker container
+      - name: Create mongo Docker container
+        id: build_mongo_docker
         uses: DigiPie/mongo-action@v1.0.0
+        with:
+          image-version: latest
+          port: 27017
+      - name: Install mongodb-clients
+        id: install_mongodb_clients
+        run: sudo apt install mongodb-clients
+      - name: Test mongo connection
+        id: test_mongo_connection
+        run: "sudo mongo localhost:27017"
       - name: Install dependencies
         uses: borales/actions-yarn@v2.0.0
       - name: Run lint tests
@@ -25,6 +27,5 @@ jobs:
         run: yarn unit_test
       - name: Run integration tests
         run: integration_test
-        working-directory: ${{ matrix.work-dir }}
         env:
           NODE_ENV: drone_test
