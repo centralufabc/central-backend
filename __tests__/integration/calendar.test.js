@@ -1,10 +1,12 @@
 import request from 'supertest';
+import mongoose from 'mongoose';
 import app from '../../src/app';
 import CalendarEvent from '../../src/app/schemas/CalendarEvent';
 
 describe('Calendar', () => {
 	afterAll(async (done) => {
 		await CalendarEvent.deleteMany();
+		await mongoose.connection.close();
 		done();
 	});
 
