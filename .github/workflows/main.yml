@@ -26,6 +26,6 @@ jobs:
       - name: Run unit tests
         run: yarn unit_test
       - name: Run integration tests
-        run: integration_test
+        run: yarn integration_test
         env:
           NODE_ENV: drone_test
