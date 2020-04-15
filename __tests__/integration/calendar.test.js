@@ -4,10 +4,9 @@ import app from '../../src/app';
 import CalendarEvent from '../../src/app/schemas/CalendarEvent';
 
 describe('Calendar', () => {
-	afterAll(async (done) => {
+	afterAll(async () => {
 		await CalendarEvent.deleteMany();
 		await mongoose.connection.close();
-		done();
 	});
 
 	// LIST CALENDAR EVENT

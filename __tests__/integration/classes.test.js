@@ -4,10 +4,9 @@ import app from '../../src/app';
 import Class from '../../src/app/schemas/Class';
 
 describe('Classes', () => {
-	afterAll(async (done) => {
+	afterAll(async () => {
 		await Class.deleteMany();
 		await mongoose.connection.close();
-		done();
 	});
 
 	it('Should not accept requests with incorrect RA param', async () => {
