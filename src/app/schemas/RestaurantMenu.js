@@ -7,10 +7,10 @@ const RestaurantMenuSchema = new mongoose.Schema({
 	},
 	lunch: {
 		type: String,
+		required: true,
 	},
 	dinner: {
 		type: String,
-		required: true,
 	},
 	vegetarianOption: {
 		type: String,
