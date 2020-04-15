@@ -1,10 +1,12 @@
 import request from 'supertest';
+import mongoose from 'mongoose';
 import app from '../../src/app';
 import Class from '../../src/app/schemas/Class';
 
 describe('Classes', () => {
 	afterAll(async () => {
 		await Class.deleteMany();
+		await mongoose.connection.close();
 	});
 
 	it('Should not accept requests with incorrect RA param', async () => {

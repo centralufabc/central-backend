@@ -1,15 +1,12 @@
 import request from 'supertest';
+import mongoose from 'mongoose';
 import app from '../../src/app';
 import CalendarEvent from '../../src/app/schemas/CalendarEvent';
 
 describe('Calendar', () => {
-	beforeEach(async () => {
-		//
-	});
-
 	afterAll(async () => {
-		// Remove all documents from Calendar collection
 		await CalendarEvent.deleteMany();
+		await mongoose.connection.close();
 	});
 
 	// LIST CALENDAR EVENT
