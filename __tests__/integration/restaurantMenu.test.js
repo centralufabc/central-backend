@@ -30,12 +30,8 @@ describe('RestaurantMenu', () => {
 			desserts: ['Laranja', 'Mousse de maracujá'],
 		};
 
-		await request(app)
-			.post('/restaurant/menu')
-			.send(...finishedMenu);
-		await request(app)
-			.post('/restaurant/menu')
-			.send(...unfinishedMenu);
+		await request(app).post('/restaurant/menu').send(finishedMenu);
+		await request(app).post('/restaurant/menu').send(unfinishedMenu);
 
 		const response = await request(app).get('/restaurant/menu');
 
