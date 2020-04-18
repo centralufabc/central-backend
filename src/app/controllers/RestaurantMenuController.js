@@ -34,8 +34,8 @@ export const createRestaurantMenuValidation = celebrate({
 		lunch: Joi.string().required(),
 		vegetarianOption: Joi.string().required(),
 		garnish: Joi.string().required(),
-		salads: Joi.array().string().required(),
-		desserts: Joi.array().string().required(),
+		salads: Joi.array().items(Joi.string()).required(),
+		desserts: Joi.array().items(Joi.string()).required(),
 	}),
 });
 
