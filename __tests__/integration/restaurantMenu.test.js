@@ -36,5 +36,7 @@ describe('RestaurantMenu', () => {
 		const response = await request(app).get('/restaurant/menu');
 
 		expect(response.status).toBe(200);
+		expect(response.body.length).toBe(1);
+		expect(response.body[0]).toBe(unfinishedMenu);
 	});
 });
