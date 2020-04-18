@@ -11,6 +11,10 @@ import CalendarController, {
 import ClassesController, {
 	getAllStudentClassesByRaValidation,
 } from './app/controllers/ClassesController';
+import RestaurantMenuController, {
+	createRestaurantMenuValidation,
+	getUnfinishedRestaurantMenusValidation,
+} from './app/controllers/RestaurantMenuController';
 
 const routes = new Router();
 
@@ -32,6 +36,18 @@ routes.get(
 	'/classes/:ra',
 	getAllStudentClassesByRaValidation,
 	ClassesController.getAllStudentClassesByRa
+);
+
+routes.get(
+	'/restaurant/menu',
+	getUnfinishedRestaurantMenusValidation,
+	RestaurantMenuController.getUnfinishedRestaurantMenus
+);
+
+routes.post(
+	'/restaurant/menu',
+	createRestaurantMenuValidation,
+	RestaurantMenuController.createRestaurantMenu
 );
 
 // All routes below this line require authentication

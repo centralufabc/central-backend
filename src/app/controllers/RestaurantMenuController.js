@@ -28,7 +28,7 @@ class RestaurantMenuController {
 	}
 }
 
-export const createRestaurantMenu = celebrate({
+export const createRestaurantMenuValidation = celebrate({
 	[Segments.BODY]: Joi.object().keys({
 		day: Joi.date().iso().required(),
 		lunch: Joi.string().required(),
@@ -39,7 +39,7 @@ export const createRestaurantMenu = celebrate({
 	}),
 });
 
-export const getUnfinishedRestaurantMenus = celebrate({
+export const getUnfinishedRestaurantMenusValidation = celebrate({
 	[Segments.QUERY]: Joi.object().keys({
 		page: Joi.number().min(1),
 		limit: Joi.number().min(1).max(10),
