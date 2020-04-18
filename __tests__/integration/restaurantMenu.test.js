@@ -11,20 +11,20 @@ describe('RestaurantMenu', () => {
 
 	it('Should return the correct unfinished restaurant menus', async () => {
 		const finishedMenu = {
-			day: '2020-01-20T12:00:00-03:00',
+			day: '2020-01-20',
 			lunch: 'Feijoada',
 			dinner: 'Feijoada',
-			vegetatianOption: 'Feijoada vegana',
+			vegetarianOption: 'Feijoada vegana',
 			garnish: 'Farofa',
 			salads: ['Alface', 'Beterraba'],
 			desserts: ['Laranja', 'Mousse de maracujá'],
 		};
 
 		const unfinishedMenu = {
-			day: '2030-01-20T12:00:00-03:00',
+			day: '2030-01-20',
 			lunch: 'Strogonoff de Frango',
 			dinner: 'Strongonoff de Carne',
-			vegetatianOption: 'Kibe de PTS',
+			vegetarianOption: 'Kibe de PTS',
 			garnish: 'Batata Palha',
 			salads: ['Alface', 'Beterraba'],
 			desserts: ['Laranja', 'Mousse de maracujá'],

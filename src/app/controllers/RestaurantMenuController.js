@@ -32,6 +32,7 @@ export const createRestaurantMenuValidation = celebrate({
 	[Segments.BODY]: Joi.object().keys({
 		day: Joi.date().iso().required(),
 		lunch: Joi.string().required(),
+		dinner: Joi.string(),
 		vegetarianOption: Joi.string().required(),
 		garnish: Joi.string().required(),
 		salads: Joi.array().items(Joi.string()).required(),
