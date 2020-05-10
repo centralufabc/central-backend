@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 // Middlewares
 import authMiddleware from './app/middlewares/auth';
+import adminAuthMiddleware from './app/middlewares/adminAuth';
 
 // Controllers
 import UserController, {
@@ -58,13 +59,7 @@ routes.put('/users', updateUserValidation, UserController.updateUser);
 // routes.put('/users/update_password', UserController.updatePassword);
 
 // Routes below require admin auth
-routes.use((req, res, next) => {
-	if (!req.user.isAdmin) {
-		return res.status(401).json({ error: 'Unauthorized' });
-	}
-
-	return next();
-});
+routes.use(adminAuthMiddleware);
 
 // Calendar
 routes.post('/calendar', createEventValidation, CalendarController.createEvent);
