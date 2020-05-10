@@ -1,4 +1,5 @@
 import request from 'supertest';
+import mongoose from 'mongoose';
 import app from '../../src/app';
 import CalendarEvent from '../../src/app/schemas/CalendarEvent';
 import User from '../../src/app/schemas/User';
@@ -50,6 +51,7 @@ describe('Calendar', () => {
 		// Remove all documents from Calendar collection
 		await User.deleteMany();
 		await CalendarEvent.deleteMany();
+		await mongoose.connection.close();
 	});
 
 	// LIST CALENDAR EVENT

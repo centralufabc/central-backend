@@ -1,0 +1,25 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 
+        uses: actions/checkout@v1
+      - name: Create MongoDB docker container
+        id: build_mongo_docker
+        uses: DigiPie/mongo-action@v1.0.0
+        with:
+          image-version: latest
+          port: 27017
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.0.0
+      - name: Run lint tests
+        run: yarn lint
+      - name: Run unit tests
+        run: yarn unit_test
+      - name: Run integration tests
+        run: yarn integration_test
+        env:
+          NODE_ENV: drone_test
