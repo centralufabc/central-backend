@@ -33,7 +33,8 @@ class UserController {
 	}
 
 	async getUser(req, res) {
-		const user = await User.findById(req.userId).select('name email ra');
+		const { id } = req.user;
+		const user = await User.findById(id).select('name email ra');
 
 		if (!user) {
 			return res.status(400).json({ error: 'User not found' });
@@ -44,8 +45,9 @@ class UserController {
 
 	async updateUser(req, res) {
 		const { name, ra } = req.body;
+		const { id } = req.user;
 
-		const user = await User.findById(req.userId);
+		const user = await User.findById(id);
 
 		if (!user) {
 			return res.status(400).json({ error: 'User not found' });
@@ -70,6 +72,12 @@ export const createUserValidation = celebrate({
 		name: Joi.string(),
 		email: Joi.string().email().required(),
 		password: Joi.string().required(),
+		ra: Joi.alternatives()
+			.try(
+				Joi.string().length(8).regex(/^\d+$/),
+				Joi.string().length(11).regex(/^\d+$/)
+			)
+			.error(new Error('Invalid RA')),
 	}),
 });
 
@@ -77,7 +85,10 @@ export const updateUserValidation = celebrate({
 	[Segments.BODY]: Joi.object().keys({
 		name: Joi.string(),
 		ra: Joi.alternatives()
-			.try(Joi.string().length(8), Joi.string().length(11))
+			.try(
+				Joi.string().length(8).regex(/^\d+$/),
+				Joi.string().length(11).regex(/^\d+$/)
+			)
 			.error(new Error('Invalid RA')),
 	}),
 });

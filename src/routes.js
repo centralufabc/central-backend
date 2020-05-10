@@ -57,6 +57,15 @@ routes.get('/users', UserController.getUser);
 routes.put('/users', updateUserValidation, UserController.updateUser);
 // routes.put('/users/update_password', UserController.updatePassword);
 
+// Routes below require admin auth
+routes.use((req, res, next) => {
+	if (!req.user.isAdmin) {
+		return res.status(401).json({ error: 'Unauthorized' });
+	}
+
+	return next();
+});
+
 // Calendar
 routes.post('/calendar', createEventValidation, CalendarController.createEvent);
 routes.delete('/calendar/:id', CalendarController.deleteEvent);

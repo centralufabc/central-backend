@@ -1,10 +1,22 @@
+### LOGIN
+# @name login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+	"email": "aluno@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
+
+@token = {{login.response.body.token}}
+
 ### Create User
 POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-	"name": "Rodrigo Mayer",
-	"email": "mayer.rodrigo@aluno.ufabc.edu.br",
+	"name": "Aluno UFABC",
+	"email": "aluno@aluno.ufabc.edu.br",
 	"password": "qwerty"
 }
 
@@ -18,7 +30,8 @@ PUT {{baseUrl}}/users
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
+
 {
 	"name": "Rodrigo Rominho Mayer",
-	"ra": 11201722286
+	"ra": "11000100"
 }

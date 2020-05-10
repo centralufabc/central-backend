@@ -16,8 +16,10 @@ export default async (req, res, next) => {
 	try {
 		const decoded = await promisify(jwt.verify)(token, authConfig.secret);
 
-		req.userId = decoded.id;
-		req.isAdmin = decoded.isAdmin;
+		req.user = {
+			id: decoded.id,
+			isAdmin: decoded.isAdmin,
+		};
 
 		return next();
 	} catch (err) {
@@ -25,6 +27,6 @@ export default async (req, res, next) => {
 			return res.status(401).json({ error: 'Token expired' });
 		}
 
-		return res.status(401).json({ error: 'Token invalid' });
+		return res.status(401).json({ error: 'Invalid token' });
 	}
 };
