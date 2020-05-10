@@ -1,6 +1,6 @@
 ### LOGIN
 # @name login
-POST {{baseUrl}}/login
+POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ Authorization: Bearer {{token}}
 }
 
 ### Delete Event
-DELETE {{baseUrl}}/calendar/5eb8154cb1700c42dc950bf4
+DELETE {{baseUrl}}/calendar/5eb828e3e97ab45f434c4b50
 Content-Type: application/json
 Authorization: Bearer {{token}}
 

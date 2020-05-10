@@ -1,8 +1,15 @@
 ### LOGIN
-POST {{baseUrl}}/login
+# @name login
+POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-	"email": "mayer.rodrigo@aluno.ufabc.edu.br",
+	"email": "aluno@aluno.ufabc.edu.br",
 	"password": "qwerty"
 }
+
+@token = {{login.response.body.token}}
+
+### Refresh token
+POST {{baseUrl}}/sessions/refresh
+Authorization: Bearer {{token}}
