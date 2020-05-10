@@ -17,11 +17,11 @@ jobs:
         uses: borales/actions-yarn@v2.0.0
       - name: Run lint tests
         run: yarn lint
-      - name: Run unit tests
+			- name: Run unit tests
+				run: yarn unit_test
 				env:
 					JWT_SECRET: ${{ secrets.JWT_SECRET }}
 					JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
-        run: yarn unit_test
       - name: Run integration tests
         run: yarn integration_test
         env:
