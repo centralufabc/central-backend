@@ -5,7 +5,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository 
+      - name: Checkout repository
         uses: actions/checkout@v1
       - name: Create MongoDB docker container
         id: build_mongo_docker
@@ -18,8 +18,13 @@ jobs:
       - name: Run lint tests
         run: yarn lint
       - name: Run unit tests
+				env:
+					JWT_SECRET: ${{ secrets.JWT_SECRET }}
+					JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
         run: yarn unit_test
       - name: Run integration tests
         run: yarn integration_test
         env:
-          NODE_ENV: drone_test
+					NODE_ENV: drone_test
+					JWT_SECRET: ${{ secrets.JWT_SECRET }}
+					JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
