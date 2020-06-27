@@ -15,7 +15,7 @@ export const getAllStudentClassesByRaValidation = celebrate({
 	[Segments.PARAMS]: Joi.object().keys({
 		ra: Joi.alternatives()
 			.try(Joi.string().length(8), Joi.string().length(11))
-			.error(new Error('RA inválido')),
+			.error(new Error('Invalid RA')),
 	}),
 });
 

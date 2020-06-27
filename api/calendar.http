@@ -1,5 +1,19 @@
+### LOGIN
+# @name login
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+	"email": "aluno@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
+
+@token = {{login.response.body.token}}
+
 ### Create Event (Min)
 POST {{baseUrl}}/calendar
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
 	"title": "Início do quadrimestre 2020.1",
@@ -9,6 +23,8 @@ POST {{baseUrl}}/calendar
 
 ### Create Event (Complete)
 POST {{baseUrl}}/calendar
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "title": "Início do quadrimestre 2020.1",
@@ -22,7 +38,9 @@ POST {{baseUrl}}/calendar
 }
 
 ### Delete Event
-DELETE {{baseUrl}}/calendar/5e8b6f3043783e10a9c0646d
+DELETE {{baseUrl}}/calendar/5eb828e3e97ab45f434c4b50
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### Get Unfinished Events
 GET {{baseUrl}}/calendar?page=1&limit=10

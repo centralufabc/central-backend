@@ -1,0 +1,37 @@
+### Login
+# @name login
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+	"email": "aluno@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
+
+@token = {{login.response.body.token}}
+
+### Create User
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+	"name": "Aluno UFABC",
+	"email": "aluno@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
+
+### Get User
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+
+
+### Update User
+PUT {{baseUrl}}/users
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+{
+	"name": "Rodrigo Mayer",
+	"ra": "11000100"
+}
