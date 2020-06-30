@@ -7,7 +7,7 @@ import authMiddleware from '../app/middlewares/auth';
 const bannerRouter = Router();
 
 // Get all available banners
-// bannerRouter.get('/');
+bannerRouter.get('/', BannersController.getBanners);
 
 // // Increment views
 // bannerRouter.post('/:id/views');

@@ -2,6 +2,24 @@ import { parseISO } from 'date-fns';
 import Banner from '../schemas/Banner';
 
 class BannersController {
+	async getBanners(req, res) {
+		const now = Date.now();
+
+		const banners = await Banner.find({
+			$and: [
+				{
+					$or: [
+						{ start: { $lte: now }, finish: { $gte: now } },
+						{ start: { $lte: now }, finish: undefined },
+					],
+				},
+				{ status: 1 },
+			],
+		});
+
+		return res.json(banners);
+	}
+
 	async createBanner(req, res) {
 		const { start, finish, imgUrl, linkUrl } = req.body;
 		const { user } = req;
@@ -10,6 +28,7 @@ class BannersController {
 			start: parseISO(start),
 			finish: finish ? parseISO(finish) : undefined,
 			userId: user.id,
+			status: user.isAdmin ? 1 : 2, // 1: Enabled, 2: Pending
 			imgUrl,
 			linkUrl,
 		});

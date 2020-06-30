@@ -10,6 +10,9 @@ Content-Type: application/json
 	"password": "qwerty"
 }
 
+### Get all available banners
+GET {{baseUrl}}/banners
+
 ### Create Banner
 POST {{baseUrl}}/banners
 Authorization: Bearer {{token}}
