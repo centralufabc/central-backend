@@ -21,3 +21,7 @@ Content-Type: application/json
 	"imgUrl": "https://images.unsplash.com/photo-1593059315234-fe82cafe19e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
 	"linkUrl": "https://unsplash.com/photos/dkwJLowVvl4"
 }
+
+### Disable Banner
+PATCH {{baseUrl}}/banners/5efa96edf2d70dc5a849913b
+Authorization: Bearer {{token}}

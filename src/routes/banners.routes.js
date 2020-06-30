@@ -21,6 +21,6 @@ bannerRouter.use(authMiddleware);
 bannerRouter.post('/', BannersController.createBanner);
 
 // Disable Banner
-// bannerRouter.patch('/:id');
+bannerRouter.patch('/:id', BannersController.disableBanner);
 
 export default bannerRouter;
