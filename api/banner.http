@@ -1,0 +1,23 @@
+@token = {{login.response.body.token}}
+
+### Login
+# @name login
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+	"email": "aluno@aluno.ufabc.edu.br",
+	"password": "qwerty"
+}
+
+### Create Banner
+POST {{baseUrl}}/banners
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"start": "2016-01-01",
+	"finish": "2020-08-17",
+	"imgUrl": "https://images.unsplash.com/photo-1593059315234-fe82cafe19e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+	"linkUrl": "https://unsplash.com/photos/dkwJLowVvl4"
+}

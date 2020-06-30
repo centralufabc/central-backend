@@ -13,7 +13,7 @@ const BannerSchema = new mongoose.Schema(
 		status: {
 			type: Number,
 			required: true,
-			default: 0,
+			default: 2,
 			validate: {
 				validator: Number.isInteger,
 				message: '{VALUE} is not an integer value',
