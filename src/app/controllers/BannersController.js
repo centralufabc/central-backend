@@ -54,6 +54,28 @@ class BannersController {
 
 		return res.json(banner);
 	}
+
+	async incrementViews(req, res) {
+		const { id } = req.params;
+
+		const banner = await Banner.findById(id);
+
+		banner.views += 1;
+		banner.save();
+
+		return res.status(204).send();
+	}
+
+	async incrementClicks(req, res) {
+		const { id } = req.params;
+
+		const banner = await Banner.findById(id);
+
+		banner.clicks += 1;
+		banner.save();
+
+		return res.status(204).send();
+	}
 }
 
 export default new BannersController();
