@@ -1,4 +1,4 @@
-import { parseISO } from 'date-fns';
+import { parseISO, isBefore } from 'date-fns';
 import Banner from '../schemas/Banner';
 
 class BannersController {
@@ -20,9 +20,25 @@ class BannersController {
 		return res.json(banners);
 	}
 
+	async getUserBanners(req, res) {
+		const { user } = req;
+
+		const banners = await Banner.find({
+			userId: user.id,
+		});
+
+		return res.json(banners);
+	}
+
 	async createBanner(req, res) {
 		const { start, finish, imgUrl, linkUrl } = req.body;
 		const { user } = req;
+
+		if (isBefore(parseISO(start), Date.now())) {
+			return res
+				.status(400)
+				.json({ error: "'start' cannot be on a past date" });
+		}
 
 		const newBanner = await Banner.create({
 			start: parseISO(start),

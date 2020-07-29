@@ -34,3 +34,7 @@ POST {{baseUrl}}/banners/5f07d9edf35b6375ace10a1e/clicks
 ### Disable Banner
 PATCH {{baseUrl}}/banners/5efa96edf2d70dc5a849913b
 Authorization: Bearer {{token}}
+
+### Get User Banners
+GET {{baseUrl}}/banners/my
+Authorization: Bearer {{token}}

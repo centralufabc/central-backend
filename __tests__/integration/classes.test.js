@@ -30,12 +30,12 @@ describe('Classes', () => {
 	});
 
 	it('Should return the correct classes for a given RA', async () => {
-		Class.create({
+		await Class.create({
 			code: 'A',
 			class: 'Geometria Analítica',
 			raList: ['11033320', '11022219', '11011118'],
 		});
-		Class.create({
+		await Class.create({
 			code: 'B',
 			class: 'Processamento da Informação',
 			raList: ['11033320', '11011118'],

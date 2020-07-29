@@ -20,6 +20,9 @@ bannerRouter.use(authMiddleware);
 // Create Banner
 bannerRouter.post('/', BannersController.createBanner);
 
+// Get User Banners
+bannerRouter.get('/my', BannersController.getUserBanners);
+
 // Disable Banner
 bannerRouter.patch('/:id', BannersController.disableBanner);
 

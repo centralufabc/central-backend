@@ -8,7 +8,7 @@ class Database {
 	mongo() {
 		let connectionUrl;
 		if (process.env.NODE_ENV === 'development') {
-			connectionUrl = 'mongodb://localhost:27017/central-dev2';
+			connectionUrl = 'mongodb://localhost:27017/central-dev';
 		} else if (process.env.NODE_ENV === 'test') {
 			connectionUrl = 'mongodb://localhost:27017/central-dev-test';
 		} else if (process.env.NODE_ENV === 'drone_test') {
