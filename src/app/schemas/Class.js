@@ -5,25 +5,36 @@ const ClassSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	acronym: {
+		type: String,
+		required: true,
+	},
 	class: {
 		type: String,
 		required: true,
 	},
 	theory: {
-		type: String,
+		day: String,
+		start: String,
+		finish: String,
+		place: String,
+		freq: String,
 	},
 	practice: {
+		day: String,
+		start: String,
+		finish: String,
+		place: String,
+		freq: String,
+	},
+	theoryProfessor: {
 		type: String,
 	},
-	theoryTeacher: {
-		type: String,
-	},
-	practiceTeacher: {
+	practiceProfessor: {
 		type: String,
 	},
 	raList: {
 		type: [String],
-		required: true,
 	},
 });
 

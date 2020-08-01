@@ -21,6 +21,7 @@ Content-Type: application/json
 {
 	"start": "2016-01-01",
 	"finish": "2020-08-17",
+	"status": 1,
 	"imgUrl": "https://images.unsplash.com/photo-1593059315234-fe82cafe19e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
 	"linkUrl": "https://unsplash.com/photos/dkwJLowVvl4"
 }
@@ -32,7 +33,7 @@ POST {{baseUrl}}/banners/5f07d9edf35b6375ace10a1e/views
 POST {{baseUrl}}/banners/5f07d9edf35b6375ace10a1e/clicks
 
 ### Disable Banner
-PATCH {{baseUrl}}/banners/5efa96edf2d70dc5a849913b
+PATCH {{baseUrl}}/banners/5f21f12fdaba9673c6ba4e7e
 Authorization: Bearer {{token}}
 
 ### Get User Banners

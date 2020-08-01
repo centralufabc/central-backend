@@ -4,7 +4,7 @@ import Class from '../schemas/Class';
 class ClassController {
 	async getAllStudentClassesByRa(req, res) {
 		const classes = await Class.find({ raList: req.params.ra }).select(
-			'-listaRa'
+			'-raList'
 		);
 
 		return res.json(classes);
