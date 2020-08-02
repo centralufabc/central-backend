@@ -17,7 +17,7 @@ class DisciplinesController {
 
 export const getDisciplinesValidation = celebrate({
 	[Segments.PARAMS]: Joi.object().keys({
-		acronym: Joi.string().length(10),
+		acronym: Joi.string().length(10).required(),
 	}),
 });
 

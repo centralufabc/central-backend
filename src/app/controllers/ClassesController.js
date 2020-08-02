@@ -13,7 +13,7 @@ class ClassController {
 		// Add discipline info
 		await Promise.all(
 			classes.map(async (aClass) => {
-				const info = await Discipline.find({ sigla: aClass.acronym });
+				const info = await Discipline.findOne({ sigla: aClass.acronym });
 
 				result.push({ ...aClass.toObject(), info });
 			})
