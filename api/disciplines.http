@@ -1,0 +1,5 @@
+
+@acronym = MCTA018-13
+
+### Get disciplines
+GET {{baseUrl}}/disciplines/{{acronym}}

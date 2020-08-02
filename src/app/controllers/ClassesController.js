@@ -1,5 +1,6 @@
 import { celebrate, Segments, Joi } from 'celebrate';
 import Class from '../schemas/Class';
+import Discipline from '../schemas/Discipline';
 
 class ClassController {
 	async getAllStudentClassesByRa(req, res) {
@@ -7,7 +8,18 @@ class ClassController {
 			'-raList'
 		);
 
-		return res.json(classes);
+		const result = [];
+
+		// Add discipline info
+		await Promise.all(
+			classes.map(async (aClass) => {
+				const info = await Discipline.find({ sigla: aClass.acronym });
+
+				result.push({ ...aClass.toObject(), info });
+			})
+		);
+
+		return res.json(result);
 	}
 }
 
